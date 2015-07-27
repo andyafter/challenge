@@ -44,15 +44,20 @@ class Scraper:
             while len(self.food)>0:
                 temp = self.food.pop()
                 res = []
-                
+
+                # every time finish the food link queue first
                 try:
                     res = self.food_link(temp)
                 except:
                     self.food.append(temp)
                     
-                t = ''
+                t = ''  # this is to store the response as a string
+
+                # there might not be response
                 if not res:
                     continue
+                
+                # put them into res
                 for i in res:
                     t+=i
                     t+='     '
@@ -61,6 +66,10 @@ class Scraper:
                 f.write(t)
                 print n
                 n+=1
+
+                # every file contains only 2000 food info,
+                # this is to have some result while the scraper might run
+                # for a long time without multithreading
                 if n>=2000:
                     f.close()
                     m+=1
