@@ -1,6 +1,8 @@
 # For the Engineering Challenge of Holmusk
 
-There is two parts for this repo: the scraper and the front end. 
+There are three parts for this repo: the scraper, server and the front end. 
+
+## Scraper
 
 <sub>In the scraper folder there is a simple scraper which I wrote and part of the data that I captured from MyFitnessPal. **scraper.py** is a 
 simple scraper that can crawl data from the website one by one. It is not as fast as multithreaded version in the multithreading folder
