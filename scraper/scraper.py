@@ -35,9 +35,9 @@ class Scraper:
         # This function assumes that your ram is enough to store all these
         # food names and links(it actually won't take more than 200MB)
 
-        n = 0
-        m = 7
-        f = open(str(m)+'.txt','w')
+        n = 0   # n is for the sake of keeping every file with 2000 food info
+        m = 7   # file controller, it should start with 0
+        f = open('./data/'str(m)+'.txt','w')
         while True:
 
             #### start part to be modified as multithread ########
@@ -50,19 +50,16 @@ class Scraper:
                     res = self.food_link(temp)
                 except:
                     self.food.append(temp)
-                    
-                t = ''  # this is to store the response as a string
 
                 # there might not be response
                 if not res:
                     continue
                 
-                # put them into res
-                for i in res:
-                    t+=i
-                    t+='     '
+                # put them into t as a string
+                t = "     ".join(res)
                 t+='\n'
                 print t
+
                 f.write(t)
                 print n
                 n+=1
@@ -74,7 +71,7 @@ class Scraper:
                     f.close()
                     m+=1
                     n=0
-                    f = open(str(m)+'.txt','w')
+                    f = open('./data/'str(m)+'.txt','w')
             ####  end part #######################################
 
 
