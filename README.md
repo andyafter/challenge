@@ -27,7 +27,6 @@ In order to run the server side code you need to npm install the following thing
 - mongodb
 - mongoose
 - lazy (for file reading in database.js)
-- 
 
 Also you should install [MDL](http://www.getmdl.io/started/index.html#download).
 
