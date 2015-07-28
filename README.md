@@ -18,7 +18,7 @@ You need to pip install the following things in order to run the program:
 
 Simply put the scraper inside any folder and run it.
 
-Some other scripts are added to the scraper folder like data.py and database.py. These several scripts are only to proccess the text data in the data files. Sorry if the folder looks a mess it's a habbit that I developed during my 2 years in the lab. <sup>I think that is why I am the least talented student in my lab.</sup>
+Some other scripts are added to the scraper folder like data.py and database.py. These several scripts are only to proccess the text data in the data files. Sorry if the folder looks a mess it's a habbit that I developed during my 2 years in the lab. <sup>I think that is why I am the least talented student in my lab. I mean fuck it Google is harder than Harvard now.</sup>
 
 The final data that is used in the database is in final.txt.
 
@@ -28,5 +28,5 @@ In order to run the server side code you need to npm install the following thing
 - mongoose
 - lazy (for file reading in database.js)
 
-Also you should install [MDL](http://www.getmdl.io/started/index.html#download).
+Also you should install [MDL](http://www.getmdl.io/started/index.html#download). Well This one is not important I'm just saying that I'm using new stuff. But if you want to build something onside of my stuff, which will be good for beginners, you should install this one.
 
