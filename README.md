@@ -15,10 +15,16 @@ time and actually the single thread works fine, also I'm not gonna use VPS or di
 
 You need to pip install the following things in order to run the program:
 - BeautifulSoup
-- pymongo (this one still have no use and I'm thinking about get rid of it)
 
 Simply put the scraper inside any folder and run it.
 
 Some other scripts are added to the scraper folder like data.py and database.py. These several scripts are only to proccess the text data in the data files. Sorry if the folder looks a mess it's a habbit that I developed during my 2 years in the lab. <sup>I think that is why I am the least talented student in my lab.</sup>
 
 The final data that is used in the database is in final.txt.
+
+## Server
+In order to run the server side code you need to npm install the following things:
+- mongodb
+- mongoose
+- lazy (for file reading in database.js)
+
