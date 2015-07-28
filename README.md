@@ -16,3 +16,7 @@ You need to pip install the following things in order to run the program:
 - pymongo (this one still have no use and I'm thinking about get rid of it)
 
 Simply put the scraper inside any folder and run it.
+
+Some other scripts are added to the scraper folder like data.py and database.py. These several scripts are only to proccess the text data in the data files. Sorry if the folder looks a mess it's a habbit that I developed during my 2 years in the lab. <sub>I think that is why I am the least talented student in my lab.</sub>
+
+The final data that is used in the database is in final.txt.
