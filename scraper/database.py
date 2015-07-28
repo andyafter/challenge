@@ -37,15 +37,6 @@ while True:
     ff.write(t)
     
 
-    """
-    try:
-        HTMLParser.HTMLParser().unescape(temp[0])
-        HTMLParser.HTMLParser().unescape(temp[1])
-    except:
-        ff.write(temp[0]+"     "+temp[1]+'\n')
-
-    """
-    
 f.close()
 ff.close()
 
