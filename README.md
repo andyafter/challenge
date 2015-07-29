@@ -26,6 +26,7 @@ The final data that is used in the database is in final.txt.
 In order to run the server side code you need to npm install the following things:
 - Sails.js (Of course you have to install that)
 - mongodb
+- sails-mongo
 - lazy (for file reading in database.js)
 
 Also you should install [MDL](http://www.getmdl.io/started/index.html#download). Well This one is not important I'm just saying that I'm using new stuff. But if you want to build something onside of my stuff, which will be good for beginners, you should install this one.
