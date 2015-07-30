@@ -35,10 +35,15 @@ module.exports.routes = {
     '/': {
 	view: 'homepage'
     },
+
+    '/index': {
+	view: 'index'
+    },
+
     
     'GET /test': {controller: "Foodctrl", action: "testAction"},
     'GET /another': {controller: "Foodctrl", action: "anotherAction"},
-    'GET /index': {controller: "Foodctrl", action: "index"},
+    //'GET /index': {controller: "Foodctrl", action: "index"},
     // record data is to put data in final.txt into the database
     // it only have to be used once
     'GET /recordData': {controller: "Foodctrl", action: "recordData"},
@@ -53,4 +58,5 @@ module.exports.routes = {
   ***************************************************************************/
 
 };
+
 
