@@ -23,7 +23,7 @@ Some other scripts are added to the scraper folder like data.py and database.py.
 The final data that is used in the database is in final.txt.
 
 ## Server
-In order to run the server side code you need to npm install the following things(I installed one by one, this is just to note everything down, later I'll put then inside the package.json):
+In order to run the server side code you need to npm install the following things(simply go to the food directory and type: npm install):
 - Sails.js (Of course you have to install that)
 - mongodb
 - sails-mongo
