@@ -6,8 +6,9 @@ import HTMLParser
 
 flast = open("finaldata.txt",'w')
 result = []
-for fnum in range(48):
+for fnum in range(82):
     f = open(str(fnum)+'.txt','r')
+    print fnum
     while True:
         t = f.readline()
         if len(t)<=1:
