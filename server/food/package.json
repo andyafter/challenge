@@ -24,7 +24,9 @@
       "sails-disk": "~0.10.0",
     "sails-mongo" : "~0.11.2",
     "lazy" : "~1.0.11",
-    "bower": "~1.4.1"
+    "bower": "~1.4.1",
+    "angular" : "~x.x.x",
+    "angular-ui-bootstrap" : "~x.x.x"
   },
   "scripts": {
     "debug": "node debug app.js",

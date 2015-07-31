@@ -13,6 +13,7 @@
 <!--SCRIPTS-->
 <script src="/js/dependencies/sails.io.js"></script>
 <script src="/js/dependencies/angular.js"></script>
+<script src="/js/public/BStest.js"></script>
 <script src="/js/public/SearchService.js"></script>
 <!--SCRIPTS END-->
 
@@ -29,6 +30,13 @@
       <input type="hidden" name="mode" value="web"/>
     </div>
   </form>
+
+
+
+  <div ng-controller="AlertDemoCtrl">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+    <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+  </div>
 
 </body>
 </html>
