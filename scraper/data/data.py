@@ -3,6 +3,9 @@ import HTMLParser
 #f = open("0.txt",'r')
 #a = f.readline().strip('\n').strip().split('     ')
 
+# definitely gonna change the algorithm because when the files becomes 50 and more
+# it is so freaking slow
+
 
 flast = open("finaldata.txt",'w')
 result = []
