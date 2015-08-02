@@ -33,20 +33,26 @@ module.exports.routes = {
   ***************************************************************************/
 
     '/': {
-	view: 'homepage'
+	     view: 'homepage'
     },
 
     '/index': {
-	view: 'index'
+	     view: 'index'
     },
 
-    
+
     'GET /test': {controller: "Foodctrl", action: "testAction"},
     'GET /another': {controller: "Foodctrl", action: "anotherAction"},
     //'GET /index': {controller: "Foodctrl", action: "index"},
     // record data is to put data in final.txt into the database
     // it only have to be used once
-    'GET /recordData': {controller: "Foodctrl", action: "recordData"},
+    'GET /testCreate': {controller: "Foodctrl", action: "testCreate"},
+    'GET /testFind/:name?': {controller: "Foodctrl", action: "testFind"},
+    //'POST /testPost': {controller:"DataController",action:"testPost"},
+
+    // for a get request there must be a question mark.
+    'GET /testPost/:name?/:id?': {controller: "DataController", action: "testPost"},
+    'GET /createFood/:name?/:company?/:nutrition?/:id?': {controller: "DataController", action: "createFood"}
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

@@ -4,5 +4,11 @@
 // this one is to test angular bootstrap
 
 
-var bsmod= angular.module('bsModule', ['ui.bootstrap.demo'])
+var personApp = angular.module('personApp', []);
 
+personApp.controller('PersonListCtrl', function ($scope, $http) {
+  $http.get('data/persons.json').success(function(data) {
+    $scope.persons = data;
+  });
+
+});

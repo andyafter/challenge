@@ -5,6 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 var fs = require("fs");
+var lazy = require("lazy");
 
 module.exports = {
 
@@ -12,9 +13,10 @@ module.exports = {
       res.send('hello world');
     },
 
-    anotherAction : another,
-
-
+    anotherAction : function(req,res){
+      console.log("andyafter");
+      console.log("andy|after".split('|'))
+    },
 
     index : function(req,res){
       // this is to test a way to add html page but it seems to be more complicated
@@ -29,14 +31,26 @@ module.exports = {
 
     },
 
-    recordData : function(req,res){
-      // take this as a logging proccedure
-      console.log("recordingData");
+
+
+    testCreate : function(req,res){
+      Test.create({name:'Andy Pan'}).exec(function createCB(err, created){
+        console.log('Created user with name ' + created.name);
+      });
+      res.send("success");
+    },
+
+    testFind : function(req,res){
+      Test.find({name:req.param("name")}).exec(function findCB(err, found){
+        if (found.length>=1){
+          //console.log(found.length);
+          return;
+        }
+        while (found.length)
+          console.log('Found User with name ' + found.pop().name)
+      });
+      console.log("andy");
+      res.send("success");
 
     }
-
 };
-
-    function another(req,res){
-      console.log("andyafter");
-    }

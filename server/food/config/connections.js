@@ -33,13 +33,13 @@ module.exports.connections = {
     adapter: 'sails-mongo',
     host: 'localhost',
     port: 27017,
-      user: 'andyafter',
-      password: 'sudoku214211,',
+      //user: 'andyafter',
+      //password: 'sudoku214211,',
       database: 'food_db'
       //uri = process.env.
   },
-    
-    
+
+
 
 };
 
