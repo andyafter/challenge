@@ -62,12 +62,14 @@ module.exports = {
   },
 
   queryPrevPart: function (req,res){
+    // this is to find the food name which start with the input string
     console.log("Query With Previous Part!");
 
     // here I simply give the first 10 results
     // if there is any ranking algorithms it should be put here
     // Also there should be
     Food.find({name:{"startsWith":req.param("str")}}).exec(function findCB(err, found){
+      /*
       if (found.length<=10) {
         res.json(found);
         return;
@@ -75,21 +77,73 @@ module.exports = {
       else{
         res.json(found.slice(0,10));
         return;
+      }*/
+
+      var result = [];
+      var n = 0;
+      var a;
+      while (found.length>0){
+        a = found.pop();
+        result[n] = {
+          name : a.name,
+          id : a.id
+        };
+        n+=1;
       }
+      res.json(result);
       //while (found.length)
         //console.log('Found User with id ' + found.pop().id)
     });
+  },
 
-    console.log("herehere");
+  queryContains: function (req,res){
+    // this is to find the food name which contains the input string
+    Food.find({name:{"contains":req.param("str")}}).exec(function findCB(err, found){
+      console.log(found.length);
 
+      var result = [];
+      var n = 0;
+      var a;
+      /*
+      if (found.length<=10) {
+        res.json(found);
+        return;
+      }
+      else{
+        res.json(found.slice(0,10));
+        return;
+      }*/
+      while (found.length>0){
+        a = found.pop();
+        result[n] = {
+          name : a.name,
+          id : a.id
+        };
+        n+=1;
+      }
+      res.json(result);
+      //console.log('Found User with id ' + found.pop().id)
+    });
   },
 
   queryById: function(req,res){
-    console.log("query by id"+req.param("id"));
+    // return the nutrition
+    console.log("query by id "+req.param("id"));
+    var result = {};
+    var a;
+    var t;
+    var n=0;
     Food.find({id:req.param("id")}).exec(function findCB(err, found){
-      res.json(found);
+      a = found[0].nutrition
+      t = a.split(';');
+      while(n< t.length){
+        result[t[n]] = t[n+1];
+        n+=2;
+      }
+      res.json(result);
     });
-  }
+  },
+
 
 };
 

@@ -3,7 +3,7 @@
  */
 // this one is to test angular bootstrap
 
-
+//var c = require("");
 var personApp = angular.module('personApp', []);
 
 personApp.controller('PersonListCtrl', function ($scope, $http) {
@@ -12,3 +12,9 @@ personApp.controller('PersonListCtrl', function ($scope, $http) {
   });
 
 });
+
+
+function testB() {
+  $("#test").text("changed");
+
+}

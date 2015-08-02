@@ -26,7 +26,8 @@
     "lazy" : "~1.0.11",
     "bower": "~1.4.1",
     "angular" : "~x.x.x",
-    "angular-ui-bootstrap" : "~x.x.x"
+    "angular-ui-bootstrap" : "~x.x.x",
+    "levenshtein": "~1.0"
   },
   "scripts": {
     "debug": "node debug app.js",

@@ -6,30 +6,40 @@
   <!--STYLES-->
   <link rel="stylesheet" href="/styles/importer.css">
   <link rel="stylesheet" href="/styles/material.min.css">
+  <link rel="stylesheet" href="/styles/search.css">
   <link rel="stylesheet" href="/styles/styles.css">
   <!--STYLES END-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 </head>
 <body np-app="searchBox">
 <!--SCRIPTS-->
 <script src="/js/dependencies/sails.io.js"></script>
+<script src="/js/dependencies/jquery-1.11.3.js"></script>
 <script src="/js/dependencies/angular.js"></script>
+<script src="/js/dependencies/jquery.autocomplete.js"></script>
+<script src="/js/dependencies/typeahead.js"></script>
 <script src="/js/public/BStest.js"></script>
 <script src="/js/public/SearchService.js"></script>
 <!--SCRIPTS END-->
 
   <!-- ngView -->
-  <form name="search" role="form" action="results.html">
-    <div class="input-group input-group-search">
 
-      <input type="text" class="form-control"  ng-model="blab" name="q" required>
-          <span class="input-group-addon">
-              <button class="btn-search" ng-disabled="search.$invalid">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-              </button>
-          </span>
-      <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
-    </div>
-  </form>
+  <div id="searchfield">
+    <h1 align="center" id="title">Food Search</h1>
+      <div class="sf">
+        <div id="the-basics">
+          <input class="typeahead" type="text" id="searchbox" placeholder="Food Name">
+          <button type="button" class="btn btn-primary btn-lg" onclick="searchId()">Primary</button>
+        </div>
+
+      </div>
+  </div>
+
+
 
 
 </body>
