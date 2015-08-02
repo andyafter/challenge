@@ -7,6 +7,7 @@
 
 module.exports = {
 
+
   attributes: {
     name : {
       type: 'string'
@@ -17,6 +18,9 @@ module.exports = {
     },
 
     nutrition : {
+      // for nutrition I'm gonna do the dirty thing
+      // I'm gonna store everything as a string separated with ;
+      // which means that the system will be easy to crack
       type: 'string'
     },
 

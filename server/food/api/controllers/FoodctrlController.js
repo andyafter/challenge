@@ -41,15 +41,14 @@ module.exports = {
     },
 
     testFind : function(req,res){
-      Test.find({name:req.param("name")}).exec(function findCB(err, found){
-        if (found.length>=1){
-          //console.log(found.length);
-          return;
-        }
-        while (found.length)
-          console.log('Found User with name ' + found.pop().name)
+      Food.find({}).exec(function findCB(err, found){ //name:req.param("name")
+        //if (found.length>=1){
+        console.log(found.length);
+          //return;
+        //}
+        //while (found.length)
+          //console.log('Found User with id ' + found.pop().id)
       });
-      console.log("andy");
       res.send("success");
 
     }

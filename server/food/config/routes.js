@@ -41,18 +41,22 @@ module.exports.routes = {
     },
 
 
-    'GET /test': {controller: "Foodctrl", action: "testAction"},
-    'GET /another': {controller: "Foodctrl", action: "anotherAction"},
-    //'GET /index': {controller: "Foodctrl", action: "index"},
-    // record data is to put data in final.txt into the database
-    // it only have to be used once
-    'GET /testCreate': {controller: "Foodctrl", action: "testCreate"},
-    'GET /testFind/:name?': {controller: "Foodctrl", action: "testFind"},
-    //'POST /testPost': {controller:"DataController",action:"testPost"},
+  'GET /test': {controller: "Foodctrl", action: "testAction"},
+  'GET /another': {controller: "Foodctrl", action: "anotherAction"},
+  //'GET /index': {controller: "Foodctrl", action: "index"},
+  // record data is to put data in final.txt into the database
+  // it only have to be used once
+  'GET /testCreate': {controller: "Foodctrl", action: "testCreate"},
+  'GET /testFind/:name?': {controller: "Foodctrl", action: "testFind"},
+  //'POST /testPost': {controller:"DataController",action:"testPost"},
 
-    // for a get request there must be a question mark.
-    'GET /testPost/:name?/:id?': {controller: "DataController", action: "testPost"},
-    'GET /createFood/:name?/:company?/:nutrition?/:id?': {controller: "DataController", action: "createFood"}
+  // for a get request there must be a question mark.
+  'GET /testPost/:name?/:id?': {controller: "DataController", action: "testPost"},
+  'GET /createFood/:name?/:company?/:nutrition?/:id?': {controller: "DataController", action: "createFood"},
+  'GET /simplyPrint/:name?/:company?/:nutrition?/:id?' :{controller: "DataController", action: "simplyPrint"},
+  'GET /deleteFood/:id?': {controller: "DataController", action: "deleteFood"},
+  'GET /queryPrevPart/:str?': {controller: "DataController", action: "queryPrevPart"},
+  'GET /queryById/:id?': {controller: "DataController", action: "queryById"}
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
