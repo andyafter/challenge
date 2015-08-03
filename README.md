@@ -41,8 +41,13 @@ As I do not want to put the database file or schema or something into this repo,
 
 ## about the API
 
+Create food record with food information:
 - /createFood"name=bla&company=bla&nutrition=bla&id=blabla
+Delete food record with id:
 - /deleteFood?id=blabla
+Query food records with **str** as the prefix:
 - /queryPrevPart?str=blabla  this one is used mainly for the query of auto completing
+Query food information by id:
 - /queryById?id=blabla
+Query food records that contains **str** inside their names:
 - /queryContains?str=blabla

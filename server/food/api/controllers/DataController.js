@@ -69,16 +69,7 @@ module.exports = {
     // if there is any ranking algorithms it should be put here
     // Also there should be
     Food.find({name:{"startsWith":req.param("str")}}).exec(function findCB(err, found){
-      /*
-      if (found.length<=10) {
-        res.json(found);
-        return;
-      }
-      else{
-        res.json(found.slice(0,10));
-        return;
-      }*/
-
+      console.log("Food that has "+req.param("str")+" as the prefix has " + found.length.toString()+" records.");
       var result = [];
       var n = 0;
       var a;
@@ -99,7 +90,9 @@ module.exports = {
   queryContains: function (req,res){
     // this is to find the food name which contains the input string
     Food.find({name:{"contains":req.param("str")}}).exec(function findCB(err, found){
+      console.log("Food names that contains "+req.param("str"));
       console.log(found.length);
+
 
       var result = [];
       var n = 0;
@@ -128,19 +121,54 @@ module.exports = {
 
   queryById: function(req,res){
     // return the nutrition
+    // also for each food with id queried this way,
+    // the record will also be stored inside Popularity database
     console.log("query by id "+req.param("id"));
     var result = {};
     var a;
     var t;
     var n=0;
+    var foodName = "";
+
     Food.find({id:req.param("id")}).exec(function findCB(err, found){
-      a = found[0].nutrition
+      if(found.length<=0){
+        console.log("In queryById, food with id" + req.param("id")+ "not found");
+        return;
+      }
+      foodName = found[0].name;
+      a = found[0].nutrition;
       t = a.split(';');
       while(n< t.length){
         result[t[n]] = t[n+1];
         n+=2;
       }
       res.json(result);
+    });
+
+    Popularity.find({id:req.params("id")}).exec(function findCB(err, found){
+      if (err) {
+        console.log("Error in queryById, find Popularity instance function.");
+        return;
+      }
+      if(found.length>0){
+        found[0].count+=1;
+        Popularity.update({id:req.params("id")},{count:found[0].count+1}).exec(function findCB(err, found){
+          if (err) {
+            console.log("Error in queryById, during updating Popularity.");
+            return;
+          }
+        });
+      }
+      else if(found.length==0){
+        Popularity.create({
+          name: req.param(foodName),
+          id: req.param("id"),
+          count:1
+        })
+          .exec(function createCB(err, created) {
+            console.log('Created user with name ' + created.name);
+          });
+      }
     });
   },
 
