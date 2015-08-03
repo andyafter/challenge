@@ -57,6 +57,7 @@ module.exports.routes = {
   'GET /deleteFood/:id?': {controller: "DataController", action: "deleteFood"},
   'GET /queryPrevPart/:str?': {controller: "DataController", action: "queryPrevPart"},
   'GET /queryById/:id?': {controller: "DataController", action: "queryById"},
+  'GET /queryById/:name?/:id?': {controller: "DataController", action: "queryById"},
   'GET /queryContains/:str?': {controller: "DataController", action: "queryContains"},
   /***************************************************************************
   *                                                                          *

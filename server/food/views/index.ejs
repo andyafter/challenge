@@ -88,17 +88,15 @@
 
 
 
-    <form class="form-inline global-search" role="form">
+    <form class="form-inline global-search" role="form" onsubmit="formTest()" action="queryById">
       <div class="form-group">
         <label class="sr-only" for="">Enter search terms</label>
-        <input type="search" class="form-control" id="k" name="k" placeholder="Enter search terms">
-        <input id="cn" name="cn" type="hidden" value="false" />
+        <input type="search" class="form-control" id="k" name="name" placeholder="Enter Food Name">
+        <input id="cn" name="id" type="hidden" />
       </div>
-      <button type="submit" id="s" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>
 
       </button> <a href="https://github.com/andyafter/challenge">Search Help</a>
     </form>
-
 
 
     <!-- Main component for a primary marketing message or call to action -->

@@ -27,7 +27,6 @@ module.exports = {
   },
 
   createFood : function(req,res){
-
     Food.find({id:req.param("id")}).exec(function findCB(err, found){
       if (err){
         console.log(err);
@@ -130,46 +129,52 @@ module.exports = {
     var n=0;
     var foodName = "";
 
-    Food.find({id:req.param("id")}).exec(function findCB(err, found){
-      if(found.length<=0){
-        console.log("In queryById, food with id" + req.param("id")+ "not found");
-        return;
-      }
-      foodName = found[0].name;
-      a = found[0].nutrition;
-      t = a.split(';');
-      while(n< t.length){
-        result[t[n]] = t[n+1];
-        n+=2;
-      }
-      res.json(result);
-    });
+    if(req.param("id")) {
+      Food.find({id: req.param("id")}).exec(function findCB(err, found) {
+        if (found.length <= 0) {
+          console.log("In queryById, food with id" + req.param("id") + "not found");
+          return;
+        }
+        foodName = found[0].name;
+        a = found[0].nutrition;
+        t = a.split(';');
+        while (n < t.length) {
+          result[t[n]] = t[n + 1];
+          n += 2;
+        }
+        res.json(result);
+      });
 
-    Popularity.find({id:req.params("id")}).exec(function findCB(err, found){
-      if (err) {
-        console.log("Error in queryById, find Popularity instance function.");
-        return;
-      }
-      if(found.length>0){
-        found[0].count+=1;
-        Popularity.update({id:req.params("id")},{count:found[0].count+1}).exec(function findCB(err, found){
-          if (err) {
-            console.log("Error in queryById, during updating Popularity.");
-            return;
-          }
-        });
-      }
-      else if(found.length==0){
-        Popularity.create({
-          name: req.param(foodName),
-          id: req.param("id"),
-          count:1
-        })
-          .exec(function createCB(err, created) {
-            console.log('Created user with name ' + created.name);
+      Popularity.find({id: req.param("id")}).exec(function findCB(err, found) {
+        if (err) {
+          console.log("Error in queryById, find Popularity instance function.");
+          return;
+        }
+        if (found.length > 0) {
+          found[0].count += 1;
+          Popularity.update({id: req.param("id")}, {count: found[0].count + 1}).exec(function findCB(err, found) {
+            if (err) {
+              console.log("Error in queryById, during updating Popularity.");
+              return;
+            }
           });
-      }
-    });
+        }
+        else if (found.length == 0) {
+          Popularity.create({
+            name: req.param(foodName),
+            id: req.param("id"),
+            count: 1
+          })
+            .exec(function createCB(err, created) {
+              console.log('Created user with name ' + created.name);
+            });
+        }
+      });
+    }
+    else{
+      console.log("id undefined!");
+      res.send("id undefined!");
+    }
   },
 
 

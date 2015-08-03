@@ -40,11 +40,20 @@ var substringMatcher = function(strs) {
 
 $('#k').on('input',function(){
   var t = $('#k').val();
+  console.log(t);
 
   var qurl = "http://127.0.0.1:1337/queryPrevPart?str="+t;
 
+  // when the input contains only one character you should
+  // query with prefix in the popularity database
+  // because that's my algorithm
+
   if(t.length==2&&last<2){
     // every time the length equals 2 there is a query
+    // after the input is more than 3 chars here
+    // you should keep what you have from the database,
+    // because you only do query when there are 2 chars in the
+    // input.
 
     console.log(t);
     food = [];
@@ -92,7 +101,13 @@ $('#searchbox').typeahead({
 
 
 function searchId(){
-  console.log($("#searchbox").val());
-  var qurl = "http://127.0.0.1:1337/queryById?id="+name2id[$("#searchbox").val()];
+  console.log($("#k").val());
+  var qurl = "http://127.0.0.1:1337/queryById?id="+name2id[$("#k").val()];
   window.location.replace(qurl);
+}
+
+function formTest(){
+  console.log("form tested");
+  $("#cn").val(name2id[$("#k").val()]);
+
 }
