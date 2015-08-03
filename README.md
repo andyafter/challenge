@@ -31,3 +31,18 @@ In order to run the server side code you need to npm install the following thing
 
 Also you should install [MDL](http://www.getmdl.io/started/index.html#download). Well This one is not important I'm just saying that I'm using new stuff. But if you want to build something onside of my stuff, which will be good for beginners, you should install this one.
 
+## How to run.
+
+As I do not want to put the database file or schema or something into this repo, you will have to run the **test.py** inside the data folder after the server is up. It can only be run once and for all of the data you will have to wait a couple hours for everything to be done.
+
+- open a terminal and type: mongod --dbpath .
+- open another terminal and go to sails project folder: sails lift
+- http://127.0.0.1/index this is the search page
+
+## about the API
+
+- /createFood"name=bla&company=bla&nutrition=bla&id=blabla
+- /deleteFood?id=blabla
+- /queryPrevPart?str=blabla  this one is used mainly for the query of auto completing
+- /queryById?id=blabla
+- /queryContains?str=blabla
