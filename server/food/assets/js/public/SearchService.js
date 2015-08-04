@@ -55,13 +55,7 @@ $('#k').on('input',function(){
     // because you only do query when there are 2 chars in the
     // input.
 
-    console.log(t);
     food = [];
-    // I know this type of query is dirty,
-/*    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", qurl, false );
-    xmlHttp.send( null );
-    jData=JSON.parse(xmlHttp.responseText);*/
     io.socket.get(qurl, function (data, jwres){
       for(var i=0;i< data.length;++i){
         //console.log(food.length);
@@ -99,15 +93,14 @@ $('#searchbox').typeahead({
     source: substringMatcher(food)
   });
 
-
 function searchId(){
   console.log($("#k").val());
   var qurl = "http://127.0.0.1:1337/queryById?id="+name2id[$("#k").val()];
   window.location.replace(qurl);
 }
 
+
 function formTest(){
   console.log("form tested");
   $("#cn").val(name2id[$("#k").val()]);
-
 }

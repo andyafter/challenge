@@ -56,7 +56,7 @@ module.exports.routes = {
   'GET /simplyPrint/:name?/:company?/:nutrition?/:id?' :{controller: "DataController", action: "simplyPrint"},
   'GET /deleteFood/:id?': {controller: "DataController", action: "deleteFood"},
   'GET /queryPrevPart/:str?': {controller: "DataController", action: "queryPrevPart"},
-  'GET /queryById/:id?': {controller: "DataController", action: "queryById"},
+  //'GET /queryById/:id?': {controller: "DataController", action: "queryById"},
   'GET /queryById/:name?/:id?': {controller: "DataController", action: "queryById"},
   'GET /queryContains/:str?': {controller: "DataController", action: "queryContains"},
   /***************************************************************************
