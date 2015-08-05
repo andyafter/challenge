@@ -107,6 +107,9 @@ body > .container {
   margin-left: 0;
 }
 
+td{
+  text-align: left;
+}
 
 
 

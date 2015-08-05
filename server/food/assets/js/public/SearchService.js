@@ -102,7 +102,7 @@ $('#k').typeahead({
 }*/
 
 
-function formTest(){
+function formSubmit(){
   console.log("form tested");
   var url = "http://127.0.0.1:1337/queryById?id="+name2id[$("#k").val()];
   var table = document.getElementById("mytable");
@@ -110,9 +110,11 @@ function formTest(){
   var cells=[];
   var n = 1;
 
+
   $("#foodname").val($(k).val());
   $("#cn").val(name2id[$("#k").val()]);
   io.socket.get(url, function (data, jwres){
+    console.log(data);
     while(table.rows.length > 1) {
       table.deleteRow(1);
     }
@@ -121,8 +123,9 @@ function formTest(){
       n+=1;
       cells[0] = row.insertCell(0);
       cells[1] = row.insertCell(1);
-      cells[1].innerHTML = i;
-      cells[0].innerHTML = data[i];
+      cells[0].innerHTML = i;
+      cells[1].innerHTML = data[i];
+      console.log(cells[0].innerHTML);
     }
 
   });
