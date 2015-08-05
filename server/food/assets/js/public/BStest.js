@@ -18,3 +18,7 @@ function testB() {
   $("#test").text("changed");
 
 }
+
+function table(){
+
+}

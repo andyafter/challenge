@@ -53,5 +53,9 @@ module.exports = {
 
     },
 
+    testView:function(req,res){
+      var r = {title:"testresponse",h1:"new"};
+      res.view('table');
+    }
 
 };

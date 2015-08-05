@@ -4,23 +4,24 @@
   <title>Search Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!--STYLES-->
+  <link rel="stylesheet" href="/styles/bootstrap-rtl.css">
+  <link rel="stylesheet" href="/styles/bootstrap-rtl.min.css">
+  <link rel="stylesheet" href="/styles/bootstrap.css">
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
   <link rel="stylesheet" href="/styles/importer.css">
   <link rel="stylesheet" href="/styles/material.min.css">
+  <link rel="stylesheet" href="/styles/sb-admin-rtl.css">
+  <link rel="stylesheet" href="/styles/sb-admin.css">
   <link rel="stylesheet" href="/styles/search.css">
   <link rel="stylesheet" href="/styles/typeahead.css">
-  <link rel="stylesheet" href="/styles/typeaheadjs.css">
   <!--STYLES END-->
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 </head>
 <body np-app="searchBox">
 <!--SCRIPTS-->
 <script src="/js/dependencies/sails.io.js"></script>
 <script src="/js/dependencies/jquery-1.11.3.js"></script>
 <script src="/js/dependencies/angular.js"></script>
+<script src="/js/dependencies/bloodhound.js"></script>
 <script src="/js/dependencies/jquery.autocomplete.js"></script>
 <script src="/js/dependencies/typeahead.js"></script>
 <script src="/js/public/BStest.js"></script>
@@ -61,10 +62,10 @@
               </li>
               <li class="divider"></li>
               <li class="dropdown-header">Nav header</li>
-              <li><a href="#">Separated link</a>
+              <li><a href="">Separated link</a>
 
               </li>
-              <li><a href="#">One more separated link</a>
+              <li><a href="">One more separated link</a>
 
               </li>
             </ul>
@@ -87,16 +88,28 @@
 
 
 
-    <form class="form-inline global-search" role="form"  onsubmit="formTest()" action="queryById">
+    <form class="form-inline global-search" role="form"  onsubmit="return formTest();" action="javascript:void(0);">
       <div class="form-group">
         <label class="sr-only" for="">Enter search terms</label>
-        <input type="search" class="form-control" id="k" name="name" placeholder="Enter Food Name">
+        <input type="search" class="form-control twitter-typeahead" id="k" name="name" placeholder="Enter Food Name">
         <input id="cn" name="id" type="hidden" />
       </div>
-
-      </button> <a href="https://github.com/andyafter/challenge">Search Help</a>
     </form>
 
+      <div class="col-lg-4">
+        <p id="foodname">Food Data</p>
+        <table class="table table-bordered table-hover table-striped" id="mytable">
+          <thead>
+          <tr>
+            <th> Nutrition</th>
+            <th> Amount</th>
+          </tr>
+          </thead>
+          <tbody >
+
+          </tbody>
+        </table>
+      </div>
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
         <h1>Food Autocomplete</h1>

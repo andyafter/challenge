@@ -176,5 +176,39 @@ module.exports = {
       res.send("id undefined!");
     }
   },
+
+
+  matchSet: function (req,res){
+
+    // same as queryPrevPart, in case the front end need some kind of
+    // structured json for the returned value
+    console.log("Query With Previous Part!");
+
+    // here I simply give the first 10 results
+    // if there is any ranking algorithms it should be put here
+    // Also there should be
+    Food.find({name:{"startsWith":req.param("str")}}).exec(function findCB(err, found){
+      console.log("Food that has "+req.param("str")+" as the prefix has " + found.length.toString()+" records.");
+      var result = [];
+      var n = 0;
+      var a;
+      while (found.length>0){
+        a = found.pop();
+        result[n] = {
+          name : a.name,
+          id : a.id
+        };
+        n+=1;
+      }
+      res.json(result);
+      //while (found.length)
+      //console.log('Found User with id ' + found.pop().id)
+    });
+  },
 };
+
+
+
+
+
 

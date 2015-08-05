@@ -48,6 +48,7 @@ module.exports.routes = {
   // it only have to be used once
   'GET /testCreate': {controller: "Foodctrl", action: "testCreate"},
   'GET /testFind/:name?': {controller: "Foodctrl", action: "testFind"},
+  'GET /testView': {controller: "FoodctrlController", action: "testView"},
   //'POST /testPost': {controller:"DataController",action:"testPost"},
 
   // for a get request there must be a question mark.
