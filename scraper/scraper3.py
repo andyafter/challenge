@@ -1,7 +1,9 @@
-import urllib2
-import HTMLParser
-from BeautifulSoup import BeautifulSoup
-from pymongo import MongoClient
+#this is Python 3 version of the scraper
+
+import urllib.request as urllib2
+from html.parser import HTMLParser
+from bs4 import BeautifulSoup
+
 
 class Scraper:
     def __init__(self,baseURL,seed):
@@ -36,7 +38,7 @@ class Scraper:
         # food names and links(it actually won't take more than 200MB)
 
         n = 0   # n is for the sake of keeping every file with 2000 food info
-        m = 7   # file controller, it should start with 0
+        m = 100   # file controller, it should start with 0
         f = open('./data/'+str(m)+'.txt','w')
         while True:
 
@@ -58,10 +60,8 @@ class Scraper:
                 # put them into t as a string
                 t = "     ".join(res)
                 t+='\n'
-                print t
-
                 f.write(t)
-                print n
+                print(str(t))
                 n+=1
 
                 # every file contains only 2000 food info,
@@ -79,6 +79,7 @@ class Scraper:
             if not self.brand:
                 break
             temp = self.brand.pop()
+            
             try:
                 self.brand_link(temp)
             except:
@@ -88,10 +89,11 @@ class Scraper:
         
     def food_link(self,URL):
         # all the URL in a parameter is the later parts like the food link or brand
-        print self.baseURL+URL
-        res = urllib2.urlopen(self.baseURL+URL)
-        soup = BeautifulSoup(res)
-        hparser = HTMLParser.HTMLParser()
+        print(self.baseURL+URL)
+        res = urllib2.urlopen(self.baseURL+URL).read()
+        #print (res)
+        soup = BeautifulSoup(res,'html.parser')
+        #hparser = HTMLParser.HTMLParser()
         result = []
         for link in soup.findAll('a'):
             if link['href'][0:2]=='/f':
@@ -117,15 +119,19 @@ class Scraper:
             # here I omitted the part for the string to be unescaped in order for the ascii codes to be
             # able to pass through
             # you can always decode
-            temp = des.renderContents().split('-')
+            temp = des.encode_contents()
+            temp = temp.decode("unicode_escape").split('-')
+            
             
             if len(temp)>=2:
                 result.append(temp[1])  # food name
                 result.append(temp[0])  # company name
         for t in soup.findAll('td'):
-            temp = t.renderContents()
-            if temp[0]=='&' and temp[-1]==';':
+            temp = t.encode_contents()
+            if temp==b'\xc2\xa0':
                 continue
+            temp = temp.decode("unicode_escape").strip()
+            
             result.append(temp)
         return  result
         # change it to storing to database when you are about to finish
@@ -133,8 +139,8 @@ class Scraper:
     def brand_link(self,URL):
         # for a brand link there might contain the exact same link in the page
         # as the URL, so you need to check.
-        res = urllib2.urlopen(self.baseURL+URL)
-        soup = BeautifulSoup(res)
+        res = urllib2.urlopen(self.baseURL+URL).read()
+        soup = BeautifulSoup(res,'html.parser')
         for link in soup.findAll('a'):
             if link['href'] == URL:
                 continue
